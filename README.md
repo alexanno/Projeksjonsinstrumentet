@@ -5,8 +5,20 @@ hvilken kartprojeksjon man velger. Samme landegrenser, samme graticule — bare 
 på over 30 forskjellige måter, fra Web Mercator til det hjerteformede Bonne-kartet fra
 1500-tallet.
 
-Leveres som **én selvstendig HTML-fil**. Ingen
-installasjon, ingen build-steg — bare åpne filen i en nettleser.
+Leveres som **selvstendige HTML-filer**. Ingen
+installasjon, ingen build-steg — bare åpne filene i en nettleser.
+
+## EPSG-guessr — spillet
+
+`epsg-guessr.html` er et frittstående GeoGuessr-inspirert gjettespill bygget på samme
+projeksjonskatalog og landedata. Du får se et lite, tilfeldig utsnitt av et verdenskart
+— noen ganger hele projeksjonen, noen ganger bare et hjørne med land og gradnett — og
+skal gjette hvilken EPSG-/ESRI-kode kartet er projisert i, enten ved å velge blant fire
+alternativer eller (i **Geonerd-modus**) skrive inn koden fra hukommelsen uten
+alternativer å støtte seg på. Katalogen har 51 projeksjoner (verdensprojeksjoner,
+polare/regionale systemer og en håndfull UTM-/Lambert-/Albers-soner rundt om i verden),
+og hver runde krymper og panorerer tilfeldig for å gi stor variasjon selv med samme
+projeksjon. Se lenken øverst i `index.html`, eller åpne `epsg-guessr.html` direkte.
 
 ## Hva verktøyet gjør
 
