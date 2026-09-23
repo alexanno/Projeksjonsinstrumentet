@@ -33,8 +33,9 @@ projeksjon. Se lenken øverst i `index.html`, eller åpne `epsg-guessr.html` dir
 
 ## Prosjeksjonskatalog
 
-31 oppføringer, gruppert etter familie. Koder uten offisiell EPSG/ESRI-kode (klassiske/
-historiske projeksjoner) vises med navn i stedet for kode.
+32 oppføringer, gruppert etter familie. Koder uten offisiell EPSG/ESRI-kode (klassiske/
+historiske projeksjoner, eller — for AuthaGraph — en patentert projeksjon uten
+registrert kode) vises med navn i stedet for kode.
 
 ### Sylindriske
 | Kode | Navn |
@@ -99,18 +100,34 @@ historiske projeksjoner) vises med navn i stedet for kode.
 | EPSG:5880 | SIRGAS 2000 / Brazil Polyconic |
 | ESRI:54029 | Van der Grinten I |
 
-¹ MILLER, GOODE, BONNE, AITOFF, HAMMER og GALLPETERS har ingen offisiell
+### Polyedriske
+| Kode | Navn |
+|---|---|
+| AUTHAGRAPH¹ | AuthaGraph (Imago-tilnærming) |
+
+¹ MILLER, GOODE, BONNE, AITOFF, HAMMER, GALLPETERS og AUTHAGRAPH har ingen offisiell
 EPSG/ESRI-kode i søkbar forstand — de er interne identifikatorer i katalogen, ikke
-registrerte koder. Vises i verktøyet uten kode-prefiks.
+registrerte koder. Vises i verktøyet uten kode-prefiks. AuthaGraph har i tillegg aldri
+fått en registrerbar kode fordi den er en patentert, kommersielt lisensiert projeksjon
+(se eget avsnitt under).
 
 ## Tekniske detaljer
 
-- **Kartbibliotek:** [D3 v7](https://d3js.org/) (`d3-geo`) for selve projeksjonene og
+- **Kartbibliotek:** [D3 v7](https://d3js.org/) (`d3-geo`) for selve projeksjonene,
   [d3-geo-projection v4](https://github.com/d3/d3-geo-projection) for de utvidede
   projeksjonene (Robinson, Mollweide, Bonne, Aitoff, Hammer, Goode Homolosine,
-  Van der Grinten, Miller, Polyconic, Cylindrical Equal-Area). Lastes fra cdnjs/jsDelivr.
+  Van der Grinten, Miller, Polyconic, Cylindrical Equal-Area) og
+  [d3-geo-polygon v2](https://github.com/d3/d3-geo-polygon) for AuthaGraph/Imago
+  (polyedrisk projeksjon med sfærisk polygon-klipping). Lastes fra cdnjs/jsDelivr.
 - **Equal Earth (EPSG:8857)** finnes ikke i d3-geo-projection og er implementert direkte
   fra de publiserte likningene (Šavrič, Patterson & Jenny, 2018).
+- **AuthaGraph** er ikke en åpen projeksjon: Hajime Narukawa har patent på metoden og har
+  aldri publisert de eksakte likningene den ekte AuthaGraph bruker. Katalogen viser derfor
+  «Imago» — en uavhengig, fritt publisert tetraeder-projeksjon av Justin Kunimune (2017)
+  konstruert med samme grunnidé (dele kloden på et tetraeder, brette ut arealbevarende),
+  men med egne, åpne likninger. Formen ligner AuthaGraph visuelt (parameteren `k=0.68`,
+  som Kunimune selv oppgir som nærmeste visuelle tilnærming), men er ikke en kopi av det
+  patenterte kartet.
 - **Regionale/nasjonale projeksjoner** (alle med `extent` i katalogen) tilpasses (fittes)
   til et eget geografisk utsnitt i stedet for hele verden — ellers ville projeksjonen
   blitt ekstremt forvrengt langt fra sitt origo, og selve regionen ville krympet til et
